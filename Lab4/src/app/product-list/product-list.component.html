@@ -1,0 +1,37 @@
+<h2>Products</h2>
+
+<div *ngFor="let product of products" class="product1">
+
+  <h3>
+    <a [title]="product.name + ' details'">
+      {{ product.name }}
+    </a>
+  </h3>
+  <img [src] = product.img width="211" height="150">
+  <p *ngIf="product.display" class="dff">
+    Дисплей: {{ product.display }}
+  </p>
+  <p *ngIf="product.process" class="dff">
+    Процессор: {{ product.process }}
+  </p>
+  <p *ngIf="product.video" class="dff">
+    Видеокарта: {{ product.video }}
+  </p>
+  <p *ngIf="product.razmer" class="dff">
+    Размер оперативной памяти: {{ product.razmer }}
+  </p>
+  <p *ngIf="product.disk" class="dff lastdff">
+    Тип жесткого диска: {{ product.disk}}
+  </p>
+  
+
+  <button type="button" (click)="share(product.url)">
+    Share
+  </button>
+  
+  <app-product-alerts
+    [product]="product" 
+    (notify)="onNotify()">
+  </app-product-alerts>
+
+</div>
