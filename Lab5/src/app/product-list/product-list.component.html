@@ -1,0 +1,52 @@
+<h2>Products</h2>
+<select name="filter" (change) = "changeFilter($any($event).target.value)">
+  <option value="All">All</option>
+  <option value="Game">Game laptops</option>
+  <option value="Apple">Apple Laptops</option>
+  <option value="Smart">Smart Laptops</option>
+</select>
+
+<div *ngFor="let product of products" class="product1">
+
+  <h3>
+    <a [title] = "product.name + ' details'"
+    [routerLink]="['/products', product.id]">>
+      {{ product.name }}
+    </a>
+</h3>
+  <img [src] = product.img width="211" height="150">
+  <p *ngIf="product.display" class="dff">
+    Дисплей: {{ product.display }}
+  </p>
+  <p *ngIf="product.process" class="dff">
+    Процессор: {{ product.process }}
+  </p>
+  <p *ngIf="product.video" class="dff">
+    Видеокарта: {{ product.video }}
+  </p>
+  <p *ngIf="product.razmer" class="dff">
+    Размер оперативной памяти: {{ product.razmer }}
+  </p>
+  <p *ngIf="product.disk" class="dff lastdff">
+    Тип жесткого диска: {{ product.disk}}
+  </p>
+  <div>
+    <p>{{product.likes}}</p>
+    <div class="delike">
+    <button (click)="inc(product.id)" class="like">Like</button>
+    <button (click)="del(product.id)" class="delete like">Delete</button>
+  </div>
+  </div>
+  
+<div class="buttons">
+  <button type="button" (click)="share(product.url)" class="notare">
+    Share
+  </button>
+  
+  <app-product-alerts
+    [product]="product" 
+    (notify)="onNotify()">
+  </app-product-alerts>
+</div>
+
+</div>

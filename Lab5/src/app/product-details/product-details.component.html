@@ -1,0 +1,22 @@
+<h2>Product Details</h2>
+
+<div *ngIf="product">
+  <h3>{{product.name}}</h3>
+  <img [src] = product.img width="211" height="150">
+  <p *ngIf="product.display" class="dff">
+    Дисплей: {{ product.display }}
+  </p>
+  <p *ngIf="product.process" class="dff">
+    Процессор: {{ product.process }}
+  </p>
+  <p *ngIf="product.video" class="dff">
+    Видеокарта: {{ product.video }}
+  </p>
+  <p *ngIf="product.razmer" class="dff">
+    Размер оперативной памяти: {{ product.razmer }}
+  </p>
+  <p *ngIf="product.disk" class="dff lastdff">
+    Тип жесткого диска: {{ product.disk}}
+  </p>
+  <button type="button" (click)="addToCart(product)">Buy</button>
+</div>
